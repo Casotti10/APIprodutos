@@ -9,17 +9,19 @@ import java.time.LocalDate;
 @Table (name = "tb_produto") //cria uma tabela no banco
 public class Produto {
 
-    @Id //indica que o ID vai ser a chave primaria
-    @GeneratedValue( //configuramos com o atributo sera gerado
+    @Id
+    @GeneratedValue(
             strategy = GenerationType.SEQUENCE,
-            generator = "SEQ_PRODUTOS"
+            generator = "produto_seq"
     )
-    @SequenceGenerator( //configuramos com o atributo sera gerado
-            name = "SEQ_PRODUTOS",
+    @SequenceGenerator(
+            name = "produto_seq",
             sequenceName = "SEQ_PRODUTOS",
             allocationSize = 1
     )
     private Long id;
+
+
 
     @Column(length = 100, nullable = false)
     private String nome;
