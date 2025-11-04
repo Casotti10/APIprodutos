@@ -1,49 +1,52 @@
-package br.com.fiap.produtos.controller;
+package br.com.fiap.fintech.controller;
 
-import br.com.fiap.produtos.model.Produto;
-import br.com.fiap.produtos.service.ProdutoService;
+import br.com.fiap.fintech.model.Usuario;
+import br.com.fiap.fintech.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController //indica que e uma aplicação rest, responde a um crud
-@RequestMapping("/api") //prefixo da base da URL
+@RestController
+@RequestMapping("/api")
 public class UsuarioController {
 
+    @Autowired
+    private UsuarioService usuarioService;
 
-    @Autowired //injetando as dependencias
-    private ProdutoService produtoService;
-
-    @PostMapping ("/usuarios")//Cadastrar produto
+    // POST /api/usuario
+    @PostMapping("/usuario")
     @ResponseStatus(HttpStatus.CREATED)
-    public Produto salvar (@RequestBody Produto produto){
-        return produtoService.salvar(produto);
+    public Usuario salvar(@RequestBody Usuario usuario) {
+        return usuarioService.salvar(usuario);
     }
 
-    @GetMapping("/usuarios")
+    // GET /api/usuario
+    @GetMapping("/usuario")
     @ResponseStatus(HttpStatus.OK)
-    public List<Produto> listarTodos(){
-        return produtoService.listarTodos();
+    public List<Usuario> listarTodos() {
+        return usuarioService.listarTodos();
     }
 
+    // GET /api/usuarios/{id}
     @GetMapping("/usuarios/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public Produto buscarPorId (@PathVariable Long id){
-        return produtoService.buscarPorID(id);
+    public Usuario buscarPorId(@PathVariable Long id) {
+        return usuarioService.buscarPorID(id);
     }
 
+    // DELETE /api/usuarios/{id}
     @DeleteMapping("/usuarios/{id}")
-    @ResponseStatus(HttpStatus.OK)
-    public void excluir (@PathVariable Long id){
-        produtoService.excluir(id);
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void excluir(@PathVariable Long id) {
+        usuarioService.excluir(id);
     }
 
+    // PUT /api/usuarios/{id}
     @PutMapping("/usuarios/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public Produto atualizar (@RequestBody Produto produto, @PathVariable Long id){
-        return produtoService.atualizar(id, produto);
+    public Usuario atualizar(@RequestBody Usuario usuario, @PathVariable Long id) {
+        return usuarioService.atualizar(id, usuario);
     }
-
 }
