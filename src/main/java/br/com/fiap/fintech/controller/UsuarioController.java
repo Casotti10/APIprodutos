@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
+
+@CrossOrigin(origins = "http://localhost:5173")
 @RestController
 @RequestMapping("/api")
 public class UsuarioController {
@@ -16,14 +19,14 @@ public class UsuarioController {
     private UsuarioService usuarioService;
 
     // POST /api/usuario
-    @PostMapping("/usuario")
+    @PostMapping("/usuarios")
     @ResponseStatus(HttpStatus.CREATED)
     public Usuario salvar(@RequestBody Usuario usuario) {
         return usuarioService.salvar(usuario);
     }
 
     // GET /api/usuario
-    @GetMapping("/usuario")
+    @GetMapping("/usuarios")
     @ResponseStatus(HttpStatus.OK)
     public List<Usuario> listarTodos() {
         return usuarioService.listarTodos();

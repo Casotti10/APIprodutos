@@ -16,14 +16,14 @@ public class ReceitaController {
     private ReceitaService receitaService;
 
     // POST /api/receita
-    @PostMapping("/receita")
+    @PostMapping("/receitas")
     @ResponseStatus(HttpStatus.CREATED)
     public Receita salvar(@RequestBody Receita receita) {
         return receitaService.salvar(receita);
     }
 
     // GET /api/receita
-    @GetMapping("/receita")
+    @GetMapping("/receitas")
     @ResponseStatus(HttpStatus.OK)
     public List<Receita> listarTodos() {
         return receitaService.listarTodos();

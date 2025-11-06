@@ -16,14 +16,14 @@ public class DespesaController {
     private DespesaService despesaService;
 
     // POST /api/despesa
-    @PostMapping("/despesa")
+    @PostMapping("/despesas")
     @ResponseStatus(HttpStatus.CREATED)
     public Despesa salvar(@RequestBody Despesa despesa) {
         return despesaService.salvar(despesa);
     }
 
     // GET /api/despesa
-    @GetMapping("/despesa")
+    @GetMapping("/despesas")
     @ResponseStatus(HttpStatus.OK)
     public List<Despesa> listarTodos() {
         return despesaService.listarTodos();
