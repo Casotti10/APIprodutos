@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* App base */
+html,body,#root{height:100%}
+body{@apply bg-gray-50 text-gray-900}
+.app-root{@apply min-h-screen flex flex-col}
+
+/* Container */
+.container{@apply max-w-5xl mx-auto px-4 py-6}
+
+/* Navbar visual */
+.navbar{@apply bg-white px-4 py-3 shadow-sm flex items-center justify-between}
+.nav-links{@apply flex items-center gap-3}
+
+/* Card */
+.card{@apply bg-white p-4 rounded-lg shadow}
+
+/* Table */
+.table{@apply w-full table-auto border-collapse}
+.table th, .table td{@apply px-4 py-2 border-b border-gray-100}
+
+/* Form row helper */
+.form-row{@apply grid gap-4 md:grid-cols-3}
+
+/* Buttons, inputs, alerts using tailwind @apply for consistent styling */
+.btn{@apply px-4 py-2 rounded-md font-semibold}
+.btn.primary{@apply bg-blue-600 text-white hover:bg-blue-700}
+.btn.secondary{@apply bg-gray-200 text-gray-800 hover:bg-gray-300}
+
+.input{@apply border border-gray-300 rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-300}
+
+.alert{@apply p-3 rounded-md mb-3}
+.alert.error{@apply bg-red-50 text-red-800}
+.alert.success{@apply bg-green-50 text-green-800}
+
+@media (max-width: 640px){
+  .form-row{@apply grid grid-cols-1}
+}
